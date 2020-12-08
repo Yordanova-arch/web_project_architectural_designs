@@ -1,0 +1,47 @@
+{% extends 'common/base.html' %}
+
+{% block site_title %}
+    Home page
+{% endblock %}
+
+{% block content %}
+    <div class="container-md">
+        <h2>{{ design.created_by.user.username }}</h2>
+
+        <div class="clearfix">
+            <img src="{{ design.image.url }}" alt="Image of {{ design.name }}">
+            <p>Description: {{ design.description }}</p>
+            <p>Stories: {{ design.stories }}</p>
+            <p>Baths: {{ design.baths }}</p>
+            <p>Beds: {{ design.beds }}</p>
+            <p>Garages: {{ design.garages }}</p>
+
+        </div>
+
+        <div class="card-group">
+            {% if design.image_floor_one %}
+            <div class="card">
+                <img src="{{ design.image_floor_one.url}}" class="card-img-top" alt="No picture">
+                <div class="card-body">
+                    <h5 class="card-title">First floor</h5>
+
+                </div>
+            </div>
+            {% endif %}
+            {% if design.image_floor_two %}
+            <div class="card">
+                <img src="{{ design.image_floor_two.url}}" class="card-img-top" alt="No picture">
+                <div class="card-body">
+                    <h5 class="card-title">Two floor</h5>
+
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+
+
+    </div>
+
+
+{% endblock %}

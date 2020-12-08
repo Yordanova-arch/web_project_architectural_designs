@@ -1,0 +1,16 @@
+{% extends 'common/base.html' %}
+%}
+{% block site_title %}
+        Modern House Plans, Floor Plans & Designs
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="d-flex p-3">
+        {% for design_entry in designs %}
+            {% include 'partials/arch_details.html' with design=design_entry %}
+
+        {% endfor %}
+    </div>
+{% endblock %}

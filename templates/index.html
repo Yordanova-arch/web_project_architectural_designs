@@ -1,0 +1,36 @@
+{% extends 'common/base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+{% endblock %}
+
+{% block site_title %}
+    Welcome to Architectural Designs
+{% endblock %}
+
+
+{% block content %}
+    <div class="main">
+        <div class="container">
+            <h3 class="h-text">WHAT WE ARE ABOUT</h3>
+            <p>Our mission is to help people visualize, create & maintain beautiful homes. We bring to you inspiring
+                visuals of cool homes, specific spaces, architectural marvels and new design trends.</p>
+            <p>As part of this philosophy, we include our clients in every step of the creative process to ensure that
+                our work is exactly what they had in mind. The end result is an inspiring and breakthrough design that
+                will boost their profile in meaningful ways. Contact us to find out more.</p>
+            <p>Follow us for a daily dose of outstanding homes, intelligent architecture & beautiful design.</p>
+
+            <a class="btn right" href="#">
+                Login
+            </a>
+
+            <a class="btn left" href="#">
+                Register
+            </a>
+
+
+        </div>
+        <img class="img-container" src="{% static 'images/attic-living-room.jpg' %}" alt="Image"/>
+    </div>
+{% endblock %}

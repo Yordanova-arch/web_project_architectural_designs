@@ -1,0 +1,28 @@
+{% load static %}
+<style>
+    .navbar a {
+        color: rgba(255,255,255,0.5);
+    }
+</style>
+
+<nav>
+    <ul>
+        <li class="logo"><img src="{% static 'images/logo.png' %}" alt="logo" class="image-logo"/></li>
+        <li><a class="{% if current_page == 'home' %}active{% endif %}" href="{% url 'index' %}">Home</a>
+        </li>
+
+        <li><a class="{% if current_page == 'list_designs' %}active{% endif %}" href="{% url 'list designs' %}">All designs</a>
+        </li>
+
+        <li><a href="#">Login</a>
+        </li>
+
+        <li><a href="#">Register</a>
+        </li>
+
+        <li><a href="#">Contact</a>
+        </li>
+
+        <li class="about"><a href="#">About</a></li>
+    </ul>
+</nav>
