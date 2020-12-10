@@ -1,0 +1,27 @@
+{% extends 'common/base.html' %}
+%}
+{% block site_title %}
+    <h1 class="text-center">Are you sure you want to delete {{ design.name }}?</h1>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-sm">
+
+        <div class="alert alert-dark" role="alert">
+
+            <form class="alert-link" method="post" action="{% url 'delete design' design.id %}">
+                {% csrf_token %}
+                <input type="submit" value="Confirm" class="btn btn-primary"/>
+            </form>
+
+
+
+            <a class="btn btn-primary" href="{% url 'list designs' %}">  Back  </a>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}
