@@ -1,7 +1,7 @@
 {% load static %}
 <style>
     .navbar a {
-        color: rgba(255,255,255,0.5);
+        color: rgba(255, 255, 255, 0.5);
     }
 </style>
 
@@ -11,14 +11,20 @@
         <li><a class="{% if current_page == 'home' %}active{% endif %}" href="{% url 'index' %}">Home</a>
         </li>
 
-        <li><a class="{% if current_page == 'list_designs' %}active{% endif %}" href="{% url 'list designs' %}">All designs</a>
+        <li><a class="{% if current_page == 'list_designs' %}active{% endif %}" href="{% url 'list designs' %}">All
+            designs</a>
         </li>
+        {% if user.is_authenticated %}
+            <li><a class="{% if current_page == 'create_designs' %}active{% endif %}" href="{% url 'create design' %}">Add design</a>
+            </li>
+            {{ user.name }}
+            <li class="about"><a href="{% url 'logout user' %}">Logout</a>
+            </li>
+                {% else %}
+            <li><a href="{% url 'login user' %}">Login</a>
+            </li>
 
-        <li><a href="#">Login</a>
-        </li>
-
-        <li><a href="#">Register</a>
-        </li>
+        {% endif %}
 
         <li><a href="#">Contact</a>
         </li>

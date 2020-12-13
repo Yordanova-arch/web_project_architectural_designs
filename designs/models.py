@@ -28,4 +28,10 @@ class Designs(models.Model):
     garages = models.IntegerField(blank=False,  validators=[is_negative, ])
 
     def __str__(self):
-        return f'{self.id}; {self.name}; {self.price}'
+        return f'{self.id}; {self.name}; {self.price}; {self.total_area}'
+
+
+class Comment(models.Model):
+    text = models.TextField(blank=False)
+    pet = models.ForeignKey(Designs, on_delete=models.CASCADE)
+

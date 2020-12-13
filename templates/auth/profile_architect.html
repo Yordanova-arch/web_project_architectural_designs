@@ -1,0 +1,39 @@
+{#{% extends "common/base.html" %}#}
+{#{% block content %}#}
+{#    <div class="container-fluid">#}
+{#        <div class="'row">#}
+{#            <div class="col-md-4">#}
+{#                <div class="text-center"></div>#}
+{#                {% if design_user.profile_picture %}#}
+{#                    <img src="{{ design_user.image.url }}" alt="Image" width="300" height="250">#}
+{#                {% else %}#}
+{#                    <img src="" alt="Image" width="300" height="250">#}
+{#                {% endif %}#}
+{#                <h2>{{ design_user.username }}</h2>#}
+{#                <a class="btn btn-primary btn-xs" href="{{ design_user.facebook }}" role="button">Facebook</a>#}
+{#                <a class="btn btn-primary btn-xs" href="{{ design_user.twitter }}" role="button">Twitter</a>#}
+{#                <a class="btn btn-primary btn-xs" href="{{ design_user.instagram }}" role="button">Instagram</a>#}
+{##}
+{#                <div class="w-50 m-auto">#}
+{#                    <form action="{% url 'current .... profile' %} " method="post" enctype="multipart/form-data">#}
+{#                        {% csrf_token %}#}
+{#                        {{ form }}#}
+{#                        <button class="btn btn-primary">upload</button>#}
+{#                    </form>#}
+{#                </div>#}
+{##}
+{#            </div>#}
+{#            <div class="col-md-8">#}
+{#                <p class="lead">{{ design_user.portfolio }}</p>#}
+{#                <hr/>#}
+{#                <div class="d-flex p-3">#}
+{#                    {% for design_entry in designs %}#}
+{#                        {% include 'partials/arch_details.html' with design=design_entry %}#}
+{##}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#    </div>#}
+{#{% endblock %}#}

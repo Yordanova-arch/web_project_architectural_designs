@@ -13,6 +13,8 @@ from os.path import join
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from django.urls import reverse_lazy
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -39,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'common',
     'designs',
+    'designs_auth',
+
 ]
 
 MIDDLEWARE = [
@@ -168,4 +172,8 @@ LOGGING = {
     },
 }
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGIN_URL = reverse_lazy('login user')
+
+#if login and redirect admin panel
+# LOGIN_URL = 'login user'
