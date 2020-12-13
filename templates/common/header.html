@@ -14,13 +14,14 @@
         <li><a class="{% if current_page == 'list_designs' %}active{% endif %}" href="{% url 'list designs' %}">All
             designs</a>
         </li>
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and user.is_active %}
             <li><a class="{% if current_page == 'create_designs' %}active{% endif %}" href="{% url 'create design' %}">Add design</a>
             </li>
-            {{ user.name }}
+            <li><a class="{% if current_page == 'my_designs' %}active{% endif %}" href="{% url 'my_profile' %}">{{ user.username }}</a>
+            </li>
             <li class="about"><a href="{% url 'logout user' %}">Logout</a>
             </li>
-                {% else %}
+        {% else %}
             <li><a href="{% url 'login user' %}">Login</a>
             </li>
 

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -18,6 +19,7 @@ def list_designs(request):
         'designs': designs,
         'current_page': 'list_designs',
 
+
     }
     return render(request, 'designs/list_designs.html', context)
 
@@ -28,6 +30,7 @@ def details_design(request, pk):
         context = {
             'design': design,
 
+
             'can_delete': design.created_by_id == request.user.id,
             'can_edit': design.created_by_id == request.user.id,
 
@@ -37,7 +40,6 @@ def details_design(request, pk):
 
 
 @login_required
-# @required_user(model=Designs)
 def create_design(request):
     if request.method == "GET":
         form = CreateDesignForm()
@@ -64,7 +66,7 @@ def create_design(request):
 
 
 @login_required
-# @required_user(model=Designs)
+@required_user(model=Designs)
 def delete_design(request, pk):
     design = Designs.objects.get(pk=pk)
     # to delete only owner
@@ -84,7 +86,7 @@ def delete_design(request, pk):
 
 
 @login_required
-# @required_user(model=Designs)
+@required_user(model=Designs)
 def edit_design(request, pk):
     design = Designs.objects.get(pk=pk)
     if request.method == "GET":

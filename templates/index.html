@@ -20,13 +20,18 @@
                 our work is exactly what they had in mind. The end result is an inspiring and breakthrough design that
                 will boost their profile in meaningful ways. Contact us to find out more.</p>
             <p>Follow us for a daily dose of outstanding homes, intelligent architecture & beautiful design.</p>
-            {% if user.is_authenticated %}
-                    <a class="btn left" href="{% url "create design" %}">
+            {% if user.is_authenticated  and user.is_active %}
+                    <a class="btn right" href="{% url "create design" %}">
                 Add design
             </a>
-                <a class="btn right" href="{% url "logout user" %}">
-                Logout
+
+                   <a class="btn left" href="{% url "my_profile" %}">
+                       {{user.username}}
             </a>
+{##}
+{#                <a class="btn right" href="{% url "logout user" %}">#}
+{#                Logout#}
+{#            </a>#}
             {% else %}
 
             <a class="btn right" href="{% url "login user" %}">
