@@ -12,8 +12,10 @@ def is_negative(value):
 # Create your models here.
 class Designs(models.Model):
     name = models.CharField(max_length=15, blank=False)
+
     total_area = models.IntegerField(blank=False,  validators=[is_negative, ])
     price = models.FloatField(blank=False,  validators=[is_negative, ])
+
     description = models.TextField(blank=False)
     image = models.ImageField(upload_to='designs', blank=False)
 
@@ -31,7 +33,15 @@ class Designs(models.Model):
         return f'{self.id}; {self.name}; {self.price}; {self.total_area}'
 
 
-class Comment(models.Model):
-    text = models.TextField(blank=False)
-    pet = models.ForeignKey(Designs, on_delete=models.CASCADE)
+class Post(models.Model):
 
+    text = models.TextField(blank=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    name = models.CharField(max_length=20, blank=False)
+    email = models.EmailField(blank=False)
+
+    design = models.ForeignKey(Designs, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Comment {self.text} by {self.name}'

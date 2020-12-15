@@ -1,11 +1,11 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+
 from django.shortcuts import render, redirect
 
 # Create your views here.
 from core.cleaned_up_files import cleaned_up_files
-from core.decorators import required_user
-from designs.forms import CreateDesignForm
+from core.decorators import user_is_entry_author
+from designs.forms import CreateDesignForm, PostForm
 from designs.models import Designs
 
 
@@ -66,7 +66,7 @@ def create_design(request):
 
 
 @login_required
-@required_user(model=Designs)
+@user_is_entry_author
 def delete_design(request, pk):
     design = Designs.objects.get(pk=pk)
     # to delete only owner
@@ -86,7 +86,7 @@ def delete_design(request, pk):
 
 
 @login_required
-@required_user(model=Designs)
+@user_is_entry_author
 def edit_design(request, pk):
     design = Designs.objects.get(pk=pk)
     if request.method == "GET":
@@ -117,3 +117,32 @@ def edit_design(request, pk):
             'form': form
         }
         return render(request, 'designs/design_edit.html', context)
+
+
+def create_post(request, pk):
+    design = Designs.objects.get(pk=pk)
+    if request.method == "GET":
+        form = PostForm()
+
+        context = {
+
+            'form': form,
+            'design': design
+
+        }
+        return render(request, 'designs/create_post.html', context)
+    else:
+        form = PostForm(data=request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.design = design
+            post.save()
+
+            return redirect('design details', pk)
+        context = {
+
+            'form': form,
+            'design': design,
+
+        }
+        return render(request, 'designs/create_post.html', context)
