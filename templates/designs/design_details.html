@@ -2,7 +2,7 @@
 
 {% block site_title %}
     <p>{{ design.name }}</p>
-    <p>Аrchitect: <a class="btn btn-primary"
+    <p>Аrchitect: <a class="btn btn-secondary"
                      href="{% url 'user_profile' design.created_by_id %}">{{ design.created_by.username }}</a></p>
 {% endblock %}
 
@@ -17,7 +17,7 @@
             <p>Baths: {{ design.baths }}</p>
             <p>Beds: {{ design.beds }}</p>
             <p>Garages: {{ design.garages }}</p>
-            <a class="btn btn-primary" href="{% url "comment design" design.id %}">Comment</a>
+            <a class="btn btn-secondary" href="{% url "comment design" design.id %}">Comment</a>
 
         </div>
         <hr/>
@@ -44,11 +44,10 @@
             {% endif %}
 
         </div>
-        <hr/>
+
         <div>
             {% if design.post_set.count > 0 %}
 
-                    <div class="container">
                         <div class="row">
                             <div class="col-md-8">
                                 <div class="page-header">
@@ -56,7 +55,10 @@
                                 </div>
 
                                 <div class="comments-list">
+
                                 {% for post_design in design.post_set.all %}
+                                    <div class="jumbotron">
+                                <div class="container">
                                     <div class="media">
                                         <p class="pull-right"><small>{{ post_design.created_on }}</small></p>
 
@@ -71,6 +73,7 @@
                             </div>
                         </div>
                     </div>
+                    </div>
                 {% endfor %}
             {% else %}
                 <div class="box">
@@ -79,6 +82,7 @@
                 </div>
 
             {% endif %}
+        </div>
     </div>
 
 
@@ -86,69 +90,3 @@
 {% endblock %}
 
 
-<div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                  <div class="page-header">
-                    <h1><small class="pull-right">45 comments</small> Comments </h1>
-                  </div>
-                   <div class="comments-list">
-                       <div class="media">
-                           <p class="pull-right"><small>5 days ago</small></p>
-                            <a class="media-left" href="#">
-                              <img src="http://lorempixel.com/40/40/people/1/">
-                            </a>
-                            <div class="media-body">
-
-                              <h4 class="media-heading user_name">Baltej Singh</h4>
-                              Wow! this is really great.
-
-                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                            </div>
-                          </div>
-                       <div class="media">
-                           <p class="pull-right"><small>5 days ago</small></p>
-                            <a class="media-left" href="#">
-                              <img src="http://lorempixel.com/40/40/people/2/">
-                            </a>
-                            <div class="media-body">
-
-                              <h4 class="media-heading user_name">Baltej Singh</h4>
-                              Wow! this is really great.
-
-                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                            </div>
-                          </div>
-                       <div class="media">
-                           <p class="pull-right"><small>5 days ago</small></p>
-                            <a class="media-left" href="#">
-                              <img src="http://lorempixel.com/40/40/people/3/">
-                            </a>
-                            <div class="media-body">
-
-                              <h4 class="media-heading user_name">Baltej Singh</h4>
-                              Wow! this is really great.
-
-                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                            </div>
-                          </div>
-                       <div class="media">
-                           <p class="pull-right"><small>5 days ago</small></p>
-                            <a class="media-left" href="#">
-                              <img src="http://lorempixel.com/40/40/people/4/">
-                            </a>
-                            <div class="media-body">
-
-                              <h4 class="media-heading user_name">Baltej Singh</h4>
-                              Wow! this is really great.
-
-                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                            </div>
-                          </div>
-                   </div>
-
-
-
-                </div>
-            </div>
-        </div>

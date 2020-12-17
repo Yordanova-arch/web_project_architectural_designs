@@ -1,7 +1,7 @@
 {% extends 'common/base.html' %}
 
 {% block site_title %}
-    <h6 class="text-center">Add your comment</h6>
+    <h4 class="text-center">Add your comment</h4>
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
                         {% csrf_token %}
                         {{ form }}
 
-                        <input type="submit" value="Post" class="btn btn-primary">
+                        <input type="submit" value="Post" class="btn btn-secondary">
                     </form>
                 </div>
                 <div class="col-lg-3"></div>

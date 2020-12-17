@@ -6,30 +6,28 @@
 </style>
 
 <nav>
-    <ul>
-        <li class="logo"><img src="{% static 'images/logo.png' %}" alt="logo" class="image-logo"/></li>
-        <li><a class="{% if current_page == 'home' %}active{% endif %}" href="{% url 'index' %}">Home</a>
+    <ul class = "this-header">
+        <li class="this-li logo"><img src="{% static 'images/logo.png' %}" alt="logo" class="image-logo"/></li>
+        <li class = "this-li "><a class="{% if current_page == 'home' %}active{% endif %}" href="{% url 'index' %}">Home</a>
         </li>
 
-        <li><a class="{% if current_page == 'list_designs' %}active{% endif %}" href="{% url 'list designs' %}">All
+        <li class = "this-li"><a class="{% if current_page == 'list_designs' %}active{% endif %}" href="{% url 'list designs' %}">All
             designs</a>
         </li>
         {% if user.is_authenticated and user.is_active %}
-            <li><a class="{% if current_page == 'create_designs' %}active{% endif %}" href="{% url 'create design' %}">Add design</a>
+            <li class = "this-li"><a class="{% if current_page == 'create_designs' %}active{% endif %}" href="{% url 'create design' %}">Add design</a>
             </li>
-            <li><a class="{% if current_page == 'my_designs' %}active{% endif %}" href="{% url 'my_profile' %}">{{ user.username }}</a>
+            <li class="this-li"><a class="{% if current_page == 'my_designs' %}active{% endif %}" href="{% url 'my_profile' %}">{{ user.username }}</a>
             </li>
-            <li class="about"><a href="{% url 'logout user' %}">Logout</a>
+            <li class="this-li about"><a href="{% url 'logout user' %}">Log out</a>
             </li>
         {% else %}
-            <li><a href="{% url 'login user' %}">Login</a>
+            <li class="this-li"><a href="{% url 'login user' %}">Log in</a>
             </li>
 
         {% endif %}
 
-        <li><a href="#">Contact</a>
-        </li>
 
-        <li class="about"><a href="#">About</a></li>
+        <li class="this-li about"><a class="{% if current_page == 'about' %}active{% endif %}" href="{% url 'about page' %}">About</a></li>
     </ul>
 </nav>

@@ -6,9 +6,14 @@ from core.BootstrapFormMixin import BootstrapFormMixin
 from designs_auth.models import UserProfile
 
 
-class RegisterForm(UserCreationForm, BootstrapFormMixin):
+class RegisterForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.add_form_control()
+
+    def add_form_control(self):
+        for (_, field) in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
 
     class Meta:
         model = User
@@ -24,9 +29,14 @@ class RegisterForm(UserCreationForm, BootstrapFormMixin):
         return email
 
 
-class LogInForm(AuthenticationForm, BootstrapFormMixin):
+class LogInForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.add_form_control()
+
+    def add_form_control(self):
+        for (_, field) in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
 
 
 class UserProfileForm(forms.ModelForm, BootstrapFormMixin):

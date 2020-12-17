@@ -7,3 +7,10 @@ def main_page(request):
         'current_page': 'home'
     }
     return render(request, 'index.html', context)
+
+
+def about_page(request):
+    context = {
+        'current_page': 'about'
+    }
+    return render(request, 'contact.html', context)

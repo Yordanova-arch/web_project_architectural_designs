@@ -6,12 +6,12 @@
         <h6 class="card-title">Area: {{ design.total_area }}m2 </h6>
         <h6 class="card-title">Price: from ${{ design.price }} </h6>
         <p class="card-text">{{ design.description | truncatewords:10 }}</p>
-        <a class="btn btn-primary" href="{% url 'design details' design.id %}">See more</a>
+        <a class="btn btn-secondary" href="{% url 'design details' design.id %}">See more</a>
         {% if design.can_edit %}
-            <a class="btn btn-primary" href="{% url 'edit design' design.id %}">Edit</a>
+            <a class="btn btn-secondary" href="{% url 'edit design' design.id %}">Edit</a>
         {% endif %}
         {% if design.can_delete %}
-            <a class="btn btn-primary" href="{% url 'delete design' design.id %}">Delete</a>
+            <a class="btn btn-secondary" href="{% url 'delete design' design.id %}">Delete</a>
         {% endif %}
     </div>
 </div>

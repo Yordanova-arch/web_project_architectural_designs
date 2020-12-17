@@ -1,13 +1,32 @@
 {% extends 'common/base.html' %}
-
-{% block content %}
-    <div class="container-fluid">
-{#    <div class="row d-flex justify-content-center">#}
-    <form action="{% url 'register user' %}" method="post">
-        {{ form }}
-        {% csrf_token %}
-        <button class="btn btn-primary">Register</button>
-        or <a href="{% url 'login user' %}">Login</a>
-    </form>
-    </div>
+{% block site_title %}
+    <h2 class="text-center">
+    Register
+    </h2>
 {% endblock %}
+{% block content %}
+
+
+             <div class="row align-items-center justify-content-center">
+
+                <form action="{% url 'register user' %}" method="post">
+
+                    {{ form }}
+
+                    {% csrf_token %}
+
+                    <button class="btn btn-primary">Register</button>
+                    or <a href="{% url 'login user' %}">Log in</a>
+                </form>
+            </div>
+
+
+{% endblock %}
+
+
+<div class="tab-content">
+
+  <div class="tab-pane" id="tab2">
+    {{ registration_form}}
+  </div>
+</div>

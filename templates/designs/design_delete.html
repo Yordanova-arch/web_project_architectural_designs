@@ -12,12 +12,12 @@
 
             <form class="alert-link" method="post" action="{% url 'delete design' design.id %}">
                 {% csrf_token %}
-                <input type="submit" value="Confirm" class="btn btn-primary"/>
+                <input type="submit" value="Confirm" class="btn btn-secondary"/>
             </form>
 
 
 
-            <a class="btn btn-primary" href="{% url 'list designs' %}">  Back  </a>
+            <a class="btn btn-secondary" href="{% url 'list designs' %}">  Back  </a>
 
         </div>
 
