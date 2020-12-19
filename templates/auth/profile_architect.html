@@ -1,74 +1,77 @@
 {% extends "common/base.html" %}
 {% block site_title %}
     <h2 class="text-center">
-    Portfolio
+        Portfolio
     </h2>
 {% endblock %}
 {% block content %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="text-center"></div>
-                {% if object.profile_picture %}
-                    <img src="{{ object.profile_picture.url }}" alt="Image" width="300" height="250">
-                {% else %}
-                    <img src="https://afribary.com/authors/anonymous-user/photo" alt="Image" width="300" height="250">
-                {% endif %}
-                <h2>{{ architect_user.username }}</h2>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="text-center"></div>
+                    {% if object.profile_picture %}
+                        <img src="{{ object.profile_picture.url }}" alt="Image" width="300" height="250">
+                    {% else %}
+                        <img src="https://afribary.com/authors/anonymous-user/photo" alt="Image" width="300"
+                             height="250">
+                    {% endif %}
+                    <h2>{{ architect_user.username }}</h2>
 
 
-                {% if object.facebook %}
-                    <a class="btn btn-info btn-xs" href="{{ object.facebook }}" role="button">Facebook</a>
-                {% else %}
-                    <a class="btn btn-info btn-xs" href="#" role="button">Facebook</a>
-                {% endif %}
+                    {% if object.facebook %}
+                        <a class="btn btn-info btn-xs" href="{{ object.facebook }}" role="button">Facebook</a>
+                    {% else %}
+                        <a class="btn btn-info btn-xs" href="#" role="button">Facebook</a>
+                    {% endif %}
 
-                {% if object.twitter %}
-                    <a class="btn btn-info btn-xs" href="{{ object.twitter }}" role="button">Twitter</a>
-                {% else %}
-                    <a class="btn btn-info btn-xs" href="#" role="button">Twitter</a>
-                {% endif %}
+                    {% if object.twitter %}
+                        <a class="btn btn-info btn-xs" href="{{ object.twitter }}" role="button">Twitter</a>
+                    {% else %}
+                        <a class="btn btn-info btn-xs" href="#" role="button">Twitter</a>
+                    {% endif %}
 
-                {% if object.instagram %}
-                    <a class="btn btn-info btn-xs" href="{{ object.instagram }}" role="button">Instagram</a>
-                {% else %}
-                    <a class="btn btn-info btn-xs" href="#" role="button">Instagram</a>
-                {% endif %}
-                <h5 >Email: {{ architect_user.email }}</h5>
-                {% if can_upload %}
-                <div class="w-50 m-auto">
+                    {% if object.instagram %}
+                        <a class="btn btn-info btn-xs" href="{{ object.instagram }}" role="button">Instagram</a>
+                    {% else %}
+                        <a class="btn btn-info btn-xs" href="#" role="button">Instagram</a>
+                    {% endif %}
+                    <h5>Email: {{ architect_user.email }}</h5>
+                    {% if can_upload %}
+                        <div class="w-50 m-auto">
 
-                    <form action="{% url 'my_profile' %} " method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ form }}
-                        <button class="btn btn-primary">Upload</button>
-                    </form>
+                            <form action="{% url 'my_profile' %} " method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form }}
+                                <button class="btn btn-primary">Upload</button>
+                            </form>
+
+                        </div>
+                    {% endif %}
 
                 </div>
-                {% endif %}
-
-            </div>
-            <div class="col-md-8">
-                <p class="lead">{{ object.portfolio }}</p>
-                <hr/>
-
-                {% if not designs %}
-                    <p>No designs</p>
+                <div class="col-md-8">
+                    <p class="lead">{{ object.portfolio }}</p>
                     <hr/>
-                    <a class="btn btn-primary btn-xs" href="{% url 'create design' %}" role="button">To Add Your Portfolio You Need to Upload Design</a>
-                {% else %}
 
-                    <h2 class='text-center'>Designs</h2>
-                    <hr/>
-                    <div class="d-flex p-3">
-                        {% for design_entry in designs %}
-                            {% include 'partials/arch_details.html' with design=design_entry %}
+                    {% if not designs %}
+                        <p>No designs</p>
+                        <hr/>
+                        <a class="btn btn-secondary btn-xs" href="{% url 'create design' %}" role="button">To Add Your
+                            Portfolio You Need to Upload Design</a>
+                    {% else %}
 
-                        {% endfor %}
-                    </div>
-                {% endif %}
+                        <h2 class='text-center'>Designs</h2>
+                        <hr/>
+                        <div class="d-flex p-3">
+                            {% for design_entry in designs %}
+                                {% include 'partials/arch_details.html' with design=design_entry %}
+
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-        </div>
 
     </div>
 {% endblock %}

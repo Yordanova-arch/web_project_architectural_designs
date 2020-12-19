@@ -103,14 +103,15 @@ def edit_design(request, pk):
         old_image_floor_two = design.image_floor_two
         form = CreateDesignForm(request.POST, request.FILES, instance=design)
         if form.is_valid():
-            # When  chаnge your images, delete the old images from media
-            if old_image:
+            if 'image' in request.FILES:
                 cleaned_up_files(old_image.path)
-            if old_image_floor_one:
-                cleaned_up_files(old_image_floor_one)
-            if old_image_floor_two:
-                cleaned_up_files(old_image_floor_two)
+            if 'image_floor_one' in request.FILES:
+                cleaned_up_files(old_image_floor_one.path)
+            if 'image_floor_two' in request.FILES:
+                cleaned_up_files(old_image_floor_two.path)
+
             form.save()
+
             return redirect('list designs')
         context = {
             'design': design,

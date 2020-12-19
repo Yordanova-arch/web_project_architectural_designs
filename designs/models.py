@@ -29,8 +29,8 @@ class Designs(models.Model):
     beds = models.IntegerField(blank=False, validators=[is_negative, ])
     garages = models.IntegerField(blank=False,  validators=[is_negative, ])
 
-    def __str__(self):
-        return f'{self.id}; {self.name}; {self.price}; {self.total_area}'
+    # def __str__(self):
+    #     return f'{self.id}; {self.name}; {self.price}; {self.total_area}'
 
 
 class Post(models.Model):

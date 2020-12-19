@@ -5,8 +5,10 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 
 # Create your views here.
+from django.http import Http404
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DetailView
+from django.views.generic import CreateView, UpdateView
 
 from designs_auth.forms import RegisterForm, LogInForm, UserProfileForm
 from designs_auth.models import UserProfile
@@ -49,10 +51,15 @@ class UserProfileView(UpdateView):
 
     def get_object(self, queryset=None):
         pk = self.kwargs.get('pk', None)
+
         if pk is None:
             user = self.request.user
         else:
             user = User.objects.get(pk=pk)
+
+        if self.request.user.is_superuser:
+            raise Http404
+
         return user.userprofile
 
     def get_context_data(self, **kwargs):
@@ -60,6 +67,7 @@ class UserProfileView(UpdateView):
         context = super().get_context_data(**kwargs)
         designs = self.get_object().user.designs_set.all()
         context['architect_user'] = self.get_object().user
+        context['admin'] = self.request.user.id == self.get_object().user.is_superuser
         for design in designs:
             if design.created_by_id == self.request.user.id:
                 can_upload = True
@@ -72,11 +80,3 @@ class UserProfileView(UpdateView):
 
         return context
 
-
-# class MyProfile(DetailView):
-#     template_name = 'auth/profile_architect.html'
-#
-#     def get_object(self, queryset=None):
-#         return self.request.user.userprofile
-#
-#     def get_context_data(self, **kwargs):

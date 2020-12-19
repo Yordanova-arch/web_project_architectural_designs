@@ -175,5 +175,4 @@ LOGGING = {
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGIN_URL = reverse_lazy('login user')
 
-#if login and redirect admin panel
-# LOGIN_URL = 'login user'
+

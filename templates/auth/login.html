@@ -9,6 +9,7 @@
     <form action="{% url 'login user' %}" method="post">
         {{ form }}
         {% csrf_token %}
+        <p></p>
         <button class="btn btn-secondary">Log in</button>
         or <a href="{% url 'register user' %}">Register</a>
     </form>
