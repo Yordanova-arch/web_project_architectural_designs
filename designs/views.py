@@ -82,6 +82,12 @@ def delete_design(request, pk):
     else:
 
         design.delete()
+        cleaned_up_files(design.image.path)
+        if design.image_floor_one:
+            cleaned_up_files(design.image_floor_one.path)
+        if design.image_floor_two:
+            cleaned_up_files(design.image_floor_two.path)
+
         return redirect('list designs')
 
 
