@@ -49,8 +49,8 @@
       text-decoration: none;
     }
     .image-logo{
-        width: 48px;
-        height: 42px;
+        width: 52px;
+        height: 52px;
         
     }
     header{
@@ -62,6 +62,6 @@
           }
           .image-logo{
             width: 40px;
-            height: 36px;
+            height: 40px;
           }
     } 

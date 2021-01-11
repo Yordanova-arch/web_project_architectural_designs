@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 # Create your views here.
 from django.http import Http404
-from django.shortcuts import redirect
+
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
 
@@ -67,7 +67,7 @@ class UserProfileView(UpdateView):
         context = super().get_context_data(**kwargs)
         designs = self.get_object().user.designs_set.all()
         context['architect_user'] = self.get_object().user
-        context['admin'] = self.request.user.id == self.get_object().user.is_superuser
+        # context['admin'] = self.request.user.id == self.get_object().user.is_superuser
         for design in designs:
             if design.created_by_id == self.request.user.id:
                 can_upload = True
